@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "customerName": "Kari Nordmann",
+    "room": "Rom A",
+    "date": "2025-01-15",
+    "startTime": "09:00",
+    "endTime": "10:00",
+    "description": "Planleggingsmøte"
+  },
+  {
+    "id": 2,
+    "customerName": "Ola Hansen",
+    "room": "Rom B",
+    "date": "2025-01-15",
+    "startTime": "10:00",
+    "endTime": "11:30",
+    "description": "Kunderevision"
+  },
+  {
+    "id": 3,
+    "customerName": "Ingrid Berg",
+    "room": "Rom A",
+    "date": "2025-01-16",
+    "startTime": "13:00",
+    "endTime": "14:00",
+    "description": "Intervju"
+  },
+  {
+    "id": 4,
+    "customerName": "Jonas Lie",
+    "room": "Rom C",
+    "date": "2025-01-17",
+    "startTime": "08:00",
+    "endTime": "09:00",
+    "description": "Morgenmøte"
+  }
+]
