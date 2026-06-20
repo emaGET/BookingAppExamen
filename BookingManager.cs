@@ -1,5 +1,5 @@
-﻿namespace BookingApp;
-
+﻿using System.Text.Json;
+namespace BookingApp;
 
 public class BookingManager
 {
@@ -77,7 +77,35 @@ public class BookingManager
 
     private void SaveToFile()
     {
-        throw new NotImplementedException();
+        // throw new NotImplementedException();
+        
+        // List<string> groceries = [];
+        // foreach (string item in groceries)
+        // {
+        //     Console.WriteLine(item);
+        // }
+        
+        var dataList = new List<BookingData>();
+        foreach (var b in _bookings)
+        {
+            dataList.Add(new BookingData
+            {
+                Id = b.Id, CustomerName = b.CustomerName, Room = b.Room, Date = b.Date, StartTime = b.Start,
+                EndTime = b.End, Description = b.Description
+            });
+
+            // string savedJson = JsonSerializer.Serialize(saveDto);
+            // File.WriteAllText("account.json", savedJson);
+            
+            
+            
+        }
+        
+        string savedJson = JsonSerializer.Serialize(dataList);
+        File.WriteAllText("bookings.json", savedJson);
+        
+        // var saveDto = new BankAccountDto { Balance = myAccount.CurrentBalance, Status = "GoodScore" };
+
     }
     
 }
