@@ -15,6 +15,24 @@ public class App
                 case "1":BookingConsole.ShowBookings(_manager.GetAll());
                     break;
                 case "2":
+                    // BookingConsole.AskForString("Name: "); 
+                    // BookingConsole.AskForString("Room: ( A / B / C )"); 
+                    // BookingConsole.AskForString("Day: "); 
+                    // BookingConsole.AskFor ("Start: "); 
+                    // BookingConsole.AskFor ("End: "); 
+                    // BookingConsole.AskForString("Description: "); 
+                    
+                    string customerName = BookingConsole.AskForString("Name: ");
+                    string room = BookingConsole.AskForString("Room: ( A / B / C ) " );
+                    string date = BookingConsole.AskForString("Day: ");
+                    string startTime = BookingConsole.AskForString("Start (hh:mm) : ");
+                    string endTime = BookingConsole.AskForString("End (hh:mm) : ");
+                    string description = BookingConsole.AskForString("Any note: ");
+                    
+                    
+                    string result = _manager.AddBooking(customerName, room, date, startTime, endTime, description);
+                    BookingConsole.ShowMessage(result);
+
                     break;
                 case "3":
                     break;
