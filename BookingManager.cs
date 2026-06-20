@@ -32,7 +32,7 @@ public class BookingManager
         {
             if (b.Room == room && b.Date == parsDate)
             {
-                if (parsStart < b.Start && parsEnd > b.End)
+                if (parsStart < b.End && parsEnd > b.Start)
                 {
                     return "The room is already taken!";
                 }
