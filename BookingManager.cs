@@ -73,7 +73,52 @@ public class BookingManager
 
     public bool DeleteBooking(int id)
     {
-        throw new NotImplementedException();
+        // throw new NotImplementedException();
+        
+        // foreach (Student student in students)
+        // {
+        // student.PrintInfo();
+                
+        // if (student.IsRepeating())
+        // {
+        //     Console.WriteLine("[REPEATING]\n");
+        // }
+        // }
+
+        
+        // string found = groceries.Find(item => item.ToLower() == input.ToLower());
+        // if (groceries.Contains(found))
+        // {
+        //     groceries.Remove(found);
+        // }
+        // else
+        // {
+        //     Console.WriteLine("Item not found...");
+        // }
+
+
+
+            Booking found = _bookings.Find(b => b.Id == id);
+            
+            // if (_bookings.Contains(found))
+            // {
+            //     _bookings.Remove(found));
+            // }
+
+            if (found != null)
+            {
+                _bookings.Remove(found);
+                SaveToFile();
+                return true;
+            }
+            
+            else
+            {
+                return false;
+            }
+            
+        
+        
     }
 
     public string EditBooking(int id, string customerName, string room, string date,
