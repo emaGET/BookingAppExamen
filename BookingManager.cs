@@ -161,7 +161,7 @@ public class BookingManager
             {
                 if (parsedStart < b.End && parsedEnd > b.Start)
                 {
-                    return "The room is already taken!";
+                    return "\nSorry! The room is already taken!\n";
                 }
             }
         }

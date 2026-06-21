@@ -26,12 +26,12 @@ public class App
                     // BookingConsole.AskFor ("End: "); 
                     // BookingConsole.AskForString("Description: "); 
 
-                    string customerName = BookingConsole.AskForString("Name: ");
-                    string room = BookingConsole.AskForString("Room: ( A / B / C ) ");
-                    string date = BookingConsole.AskForString("Day: ");
-                    string startTime = BookingConsole.AskForString("Start (hh:mm) : ");
-                    string endTime = BookingConsole.AskForString("End (hh:mm) : ");
-                    string description = BookingConsole.AskForString("Any note: ");
+                    string customerName = BookingConsole.AskForString("Navn");
+                    string room = BookingConsole.AskForString("Rom ( A / B / C )");
+                    string date = BookingConsole.AskForString("Dato");
+                    string startTime = BookingConsole.AskForString("Start (hh:mm)");
+                    string endTime = BookingConsole.AskForString("Slutt (hh:mm)");
+                    string description = BookingConsole.AskForString("Beskrivelse");
 
 
                     string result = _manager.AddBooking(customerName, room, date, startTime, endTime, description);
@@ -45,14 +45,14 @@ public class App
                 {
                     var ids = _manager.GetAllIds();
 
-                    int id = BookingConsole.AskForId(ids, "Which booking would you like to edit?");
+                    int id = BookingConsole.AskForId(ids, "Hvilken bestilling ønsker du å redigere?");
 
-                    string newCustomerName = BookingConsole.AskForString("New name");
-                    string newRoom = BookingConsole.AskForString("New room: ( A / B / C )");
-                    string newDate = BookingConsole.AskForString("New day");
-                    string newStartTime = BookingConsole.AskForString("New start (hh:mm)");
-                    string newEndTime = BookingConsole.AskForString("New end (hh:mm)");
-                    string newDescription = BookingConsole.AskForString("New note");
+                    string newCustomerName = BookingConsole.AskForString("Ny navn");
+                    string newRoom = BookingConsole.AskForString("Ny rom ( A / B / C )");
+                    string newDate = BookingConsole.AskForString("Ny dato");
+                    string newStartTime = BookingConsole.AskForString("Ny start (hh:mm)");
+                    string newEndTime = BookingConsole.AskForString("Ny slutt (hh:mm)");
+                    string newDescription = BookingConsole.AskForString("Ny beskrivelse");
 
                     string result = _manager.EditBooking(id, newCustomerName, newRoom, newDate, newStartTime,
                         newEndTime, newDescription);
@@ -64,17 +64,17 @@ public class App
                 case "4":
                 {
                     var ids = _manager.GetAllIds();
-                    int id = BookingConsole.AskForId(ids, "Which booking would you like to remove?");
+                    int id = BookingConsole.AskForId(ids, "Hvilken bestilling ønsker du å fjerne?");
 
                     bool removed = _manager.DeleteBooking(id);
 
                     if (removed)
                     {
-                        BookingConsole.ShowMessage("Booking removed!");
+                        BookingConsole.ShowMessage("Bestillingen er slettet!");
                     }
                     else
                     {
-                        BookingConsole.ShowMessage("Booking not found! Try again");
+                        BookingConsole.ShowMessage("Bestillingen ble ikke funnet! Prøv igjen");
                     }
 
                     break;
