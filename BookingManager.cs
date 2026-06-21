@@ -126,14 +126,54 @@ public class BookingManager
     {
         // throw new NotImplementedException();
 
-        Booking found = _bookings.Find(b => b.Id == id);
+        int index = _bookings.FindIndex(b => b.Id == id);
 
-        if (found == null)
+        if (index == null)
         {
             return "Booking not found!";
         }
 
-        return "Booking found!";
+        // return "Booking found!";
+
+        if (!DateOnly.TryParse(date, out DateOnly parsedDate))
+        {
+            return "Invalid date!";
+        }
+        
+        if (!TimeOnly.TryParse(startTime, out TimeOnly parsedStart))
+        {
+            return "Invalid start time!";
+        }
+
+        if (!TimeOnly.TryParse(endTime, out TimeOnly parsedEnd))
+        {
+            return "Invalid end time!";
+        }
+
+        if (parsedStart >= parsedEnd)
+        {
+            return "Start time must be before end time!";
+        }
+
+        foreach (var b in _bookings)
+        {
+            if (b.Id != id && b.Room == room && b.Date == parsedDate)
+            {
+                if (parsedStart < b.End && parsedEnd > b.Start)
+                {
+                    return "The room is already taken!";
+                }
+            }
+        }
+
+        var updatedBooking = new Booking(int id, string customerName, string room, string date,
+            string startTime, string endTime, string description);
+
+        _bookings[index] = updatedBooking;
+
+        SaveToFile();
+        
+        return "Booking Updated!";
         
     }
 
