@@ -128,7 +128,7 @@ public class BookingManager
 
         int index = _bookings.FindIndex(b => b.Id == id);
 
-        if (index == null)
+        if (index == -1)
         {
             return "Booking not found!";
         }
@@ -166,8 +166,7 @@ public class BookingManager
             }
         }
 
-        var updatedBooking = new Booking(int id, string customerName, string room, string date,
-            string startTime, string endTime, string description);
+        var updatedBooking = new Booking( id,  customerName,  room,  parsedDate,  parsedStart,  parsedEnd,  description);
 
         _bookings[index] = updatedBooking;
 
