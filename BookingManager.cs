@@ -124,7 +124,17 @@ public class BookingManager
     public string EditBooking(int id, string customerName, string room, string date,
         string startTime, string endTime, string description)
     {
-        throw new NotImplementedException();
+        // throw new NotImplementedException();
+
+        Booking found = _bookings.Find(b => b.Id == id);
+
+        if (found == null)
+        {
+            return "Booking not found!";
+        }
+
+        return "Booking found!";
+        
     }
 
     private void LoadFromFile()

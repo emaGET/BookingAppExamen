@@ -12,8 +12,10 @@ public class App
 
             switch (choice)
             {
+                
                 case "1":BookingConsole.ShowBookings(_manager.GetAll());
                     break;
+                
                 case "2":
                     // BookingConsole.AskForString("Name: "); 
                     // BookingConsole.AskForString("Room: ( A / B / C )"); 
@@ -34,15 +36,34 @@ public class App
                     BookingConsole.ShowMessage(result);
 
                     break;
+                
                 case "3":
+                    
                     break;
+                
                 case "4":
+                    var ids = _manager.GetAllIds();
+                    int id = BookingConsole.AskForId(ids, "Which booking would you like to remove?");
+
+                    bool removed = _manager.DeleteBooking(id);
+
+                    if (removed)
+                    {
+                        BookingConsole.ShowMessage("Booking removed!");
+                    }
+                    else
+                    {
+                        BookingConsole.ShowMessage("Booking not found! Try again"); 
+                    }
                     break;
+                
                 case "0":
                     return;
+                
                 default:
                     BookingConsole.ShowMessage("Ugyldig valg. Prøv igjen.");
                     break;
+                
             }
         }
     }
