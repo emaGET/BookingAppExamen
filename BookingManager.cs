@@ -14,7 +14,23 @@ public class BookingManager
 
     public List<int> GetAllIds()
     {
-        throw new NotImplementedException();
+        // throw new NotImplementedException();
+        
+        // private List<Student> students = new List<Student>();
+        // foreach (Student student in students)
+        // {
+        //     student.PrintInfo();
+        // }
+
+        var result = new List<int>();
+        
+        foreach (var b in _bookings)
+        {
+            result.Add(b.Id);
+        }
+
+        return result;
+
     }
 
     public string AddBooking(string customerName, string room, string date,
@@ -30,13 +46,17 @@ public class BookingManager
 
         foreach (var b in _bookings)
         {
+            
             if (b.Room == room && b.Date == parsDate)
             {
+                
                 if (parsStart < b.End && parsEnd > b.Start)
                 {
                     return "The room is already taken!";
                 }
+                
             }
+            
         }
 
         int newId = _bookings.Count == 0 ? 1 : _bookings.Max(b => b.Id) + 1;
