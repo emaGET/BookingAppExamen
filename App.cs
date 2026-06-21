@@ -19,13 +19,6 @@ public class App
                 case "2":
                 {
 
-                    // BookingConsole.AskForString("Name: "); 
-                    // BookingConsole.AskForString("Room: ( A / B / C )"); 
-                    // BookingConsole.AskForString("Day: "); 
-                    // BookingConsole.AskFor ("Start: "); 
-                    // BookingConsole.AskFor ("End: "); 
-                    // BookingConsole.AskForString("Description: "); 
-
                     string customerName = BookingConsole.AskForString("Navn");
                     string room = BookingConsole.AskForString("Rom ( A / B / C )");
                     string date = BookingConsole.AskForString("Dato");

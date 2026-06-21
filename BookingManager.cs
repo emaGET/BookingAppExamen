@@ -14,13 +14,6 @@ public class BookingManager
 
     public List<int> GetAllIds()
     {
-        // throw new NotImplementedException();
-        
-        // private List<Student> students = new List<Student>();
-        // foreach (Student student in students)
-        // {
-        //     student.PrintInfo();
-        // }
 
         var result = new List<int>();
         
@@ -33,12 +26,8 @@ public class BookingManager
 
     }
 
-    public string AddBooking(string customerName, string room, string date,
-        string startTime, string endTime, string description) // this parsing i can do like in the UniRegister
+    public string AddBooking(string customerName, string room, string date, string startTime, string endTime, string description)
     {
-        // throw new NotImplementedException();
-        
-        // int age = int.Parse(Console.ReadLine());
 
         DateOnly parsDate = DateOnly.Parse(date);
         TimeOnly parsStart = TimeOnly.Parse(startTime);
@@ -63,7 +52,6 @@ public class BookingManager
 
         var booking = new Booking(newId, customerName, room, parsDate, parsStart, parsEnd, description);
         
-        //  groceries.Add(input);
         _bookings.Add(booking);
 
         SaveToFile();
@@ -73,58 +61,26 @@ public class BookingManager
 
     public bool DeleteBooking(int id)
     {
-        // throw new NotImplementedException();
+
+        Booking found = _bookings.Find(b => b.Id == id);
+
+        if (found != null)
+        {
+            _bookings.Remove(found);
+            SaveToFile();
+            return true;
+        }
         
-        // foreach (Student student in students)
-        // {
-        // student.PrintInfo();
-                
-        // if (student.IsRepeating())
-        // {
-        //     Console.WriteLine("[REPEATING]\n");
-        // }
-        // }
-
-        
-        // string found = groceries.Find(item => item.ToLower() == input.ToLower());
-        // if (groceries.Contains(found))
-        // {
-        //     groceries.Remove(found);
-        // }
-        // else
-        // {
-        //     Console.WriteLine("Item not found...");
-        // }
-
-
-
-            Booking found = _bookings.Find(b => b.Id == id);
-            
-            // if (_bookings.Contains(found))
-            // {
-            //     _bookings.Remove(found));
-            // }
-
-            if (found != null)
-            {
-                _bookings.Remove(found);
-                SaveToFile();
-                return true;
-            }
-            
-            else
-            {
-                return false;
-            }
-            
-        
+        else
+        {
+            return false;
+        }
         
     }
 
     public string EditBooking(int id, string customerName, string room, string date,
         string startTime, string endTime, string description)
     {
-        // throw new NotImplementedException();
 
         int index = _bookings.FindIndex(b => b.Id == id);
 
@@ -133,7 +89,6 @@ public class BookingManager
             return "\nBestillingen ble ikke funnet!\n";
         }
 
-        // return "Booking found!";
 
         if (!DateOnly.TryParse(date, out DateOnly parsedDate))
         {
@@ -178,7 +133,7 @@ public class BookingManager
 
     private void LoadFromFile()
     {
-        // throw new NotImplementedException();
+
         var data = BookingData.LoadFromFile();
         if (data == null) return;
 
@@ -191,13 +146,6 @@ public class BookingManager
 
     private void SaveToFile()
     {
-        // throw new NotImplementedException();
-        
-        // List<string> groceries = [];
-        // foreach (string item in groceries)
-        // {
-        //     Console.WriteLine(item);
-        // }
         
         var dataList = new List<BookingData>();
         foreach (var b in _bookings)
@@ -207,10 +155,6 @@ public class BookingManager
                 Id = b.Id, CustomerName = b.CustomerName, Room = b.Room, Date = b.Date, StartTime = b.Start,
                 EndTime = b.End, Description = b.Description
             });
-
-            // string savedJson = JsonSerializer.Serialize(saveDto);
-            // File.WriteAllText("account.json", savedJson);
-            
             
             
         }
@@ -218,8 +162,6 @@ public class BookingManager
         string savedJson = JsonSerializer.Serialize(dataList);
         File.WriteAllText("bookings.json", savedJson);
         
-        // var saveDto = new BankAccountDto { Balance = myAccount.CurrentBalance, Status = "GoodScore" };
-
     }
     
 }
