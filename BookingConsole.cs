@@ -22,7 +22,7 @@ public static class BookingConsole
             string input = Console.ReadLine() ?? "";
             if (int.TryParse(input, out int id) && validIds.Contains(id))
                 return id;
-            Console.WriteLine("Ugyldig ID. Prøv igjen.");
+            Console.WriteLine("\nUgyldig ID. Prøv igjen.\n");
         }
     }
 
@@ -38,7 +38,7 @@ public static class BookingConsole
         Console.WriteLine();
         if (bookings.Count == 0)
         {
-            Console.WriteLine("  Ingen bookinger registrert.");
+            Console.WriteLine("\n  Ingen bookinger registrert.\n");
             return;
         }
 

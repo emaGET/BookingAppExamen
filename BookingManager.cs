@@ -52,7 +52,7 @@ public class BookingManager
                 
                 if (parsStart < b.End && parsEnd > b.Start)
                 {
-                    return "The room is already taken!";
+                    return "\nRommet er allerede reservert!\n";
                 }
                 
             }
@@ -67,7 +67,7 @@ public class BookingManager
         _bookings.Add(booking);
 
         SaveToFile();
-        return "Boooking added!";
+        return "\nBestillingen er lagt til!\n";
 
     }
 
@@ -130,29 +130,29 @@ public class BookingManager
 
         if (index == -1)
         {
-            return "Booking not found!";
+            return "\nBestillingen ble ikke funnet!\n";
         }
 
         // return "Booking found!";
 
         if (!DateOnly.TryParse(date, out DateOnly parsedDate))
         {
-            return "Invalid date!";
+            return "\nUgyldig dato!\n";
         }
         
         if (!TimeOnly.TryParse(startTime, out TimeOnly parsedStart))
         {
-            return "Invalid start time!";
+            return "\nUgyldig starttid!\n";
         }
 
         if (!TimeOnly.TryParse(endTime, out TimeOnly parsedEnd))
         {
-            return "Invalid end time!";
+            return "\nUgyldig sluttid!\n";
         }
 
         if (parsedStart >= parsedEnd)
         {
-            return "Start time must be before end time!";
+            return "\nStarttid må være før sluttid!\n";
         }
 
         foreach (var b in _bookings)
@@ -161,7 +161,7 @@ public class BookingManager
             {
                 if (parsedStart < b.End && parsedEnd > b.Start)
                 {
-                    return "\nSorry! The room is already taken!\n";
+                    return "\nBeklager! Rommet er allerede reservert!\n";
                 }
             }
         }
@@ -172,7 +172,7 @@ public class BookingManager
 
         SaveToFile();
         
-        return "Booking Updated!";
+        return "\nBestillingen er oppdatert!\n";
         
     }
 

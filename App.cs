@@ -70,11 +70,11 @@ public class App
 
                     if (removed)
                     {
-                        BookingConsole.ShowMessage("Bestillingen er slettet!");
+                        BookingConsole.ShowMessage("\nBestillingen er slettet!\n");
                     }
                     else
                     {
-                        BookingConsole.ShowMessage("Bestillingen ble ikke funnet! Prøv igjen");
+                        BookingConsole.ShowMessage("\nBestillingen ble ikke funnet! Prøv igjen\n");
                     }
 
                     break;
@@ -84,7 +84,7 @@ public class App
                     return;
                 
                 default:
-                    BookingConsole.ShowMessage("Ugyldig valg. Prøv igjen.");
+                    BookingConsole.ShowMessage("\nUgyldig valg. Prøv igjen.\n");
                     break;
                 
             }
